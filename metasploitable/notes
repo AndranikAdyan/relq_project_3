@@ -1,0 +1,5 @@
+unix/ftp/vsftpd_234_backdoor for 21 port +
+multi/samba/usermap_script 133 -
+multi/misc/java_rmi_server 1099 -
+exploit/unix/misc/distcc_exec for 3632 port - (change the payload to purl) (not root)
+unix/irc/unreal_ircd_3281_backdoor 6667 - (change the payload to purl)
