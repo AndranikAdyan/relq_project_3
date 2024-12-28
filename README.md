@@ -2,16 +2,15 @@
 
 ### Table of Contents
 
-1. [vsFTPd version 2.3.4 backdoor](#1-vsftpd-version-234-backdoor)
-2. [Samnba usermap script](#2-samnba-usermap-script)
-3. [Java RMI Server](#3-java-rmi-server)
-4. [DistCC Exploit](#4-distcc-exploit)
-5. [UnrealIRCd Exploit](#5-unrealircd-exploit)
-6. [Reverse Shell Payloads Generation](#6-reverse-shell-payloads-generation)
-7. [Portswigger Labs](#7-portswigger-labs)
-8. [Ruby OOP](#ruby-oop)
+1. [Metasploitable machine](#metasplotable-machine)
+2. [Reverse Shell Payloads Generation](#6-reverse-shell-payloads-generation)
+3. [Portswigger Labs](#7-portswigger-labs)
+4. [Ruby Reverse Shell](#ruby-reverse-shell)
+5. [Ruby OOP](#ruby-oop)
+6. [Metasploit-fraework Structure](#metasploit-fraework-structure)
+7. [Msf module](#msf-module)
 
-## Metasplotable Machine
+### Metasplotable Machine
 
 Before starting the exploitation, it is essential to identify which ports are open, what services are running on them, and what vulnerabilities these services may have.
 
@@ -203,7 +202,7 @@ ls
 
 From this point, you have full control of the machine.
 
-To get **more powerful features** and capabilities, we can upgrade our shell to a **Meterpreter session**. Here’s how to do it step by step:
+To get **more powerful features** and capabilities, we can upgrade our shell to a **Meterpreter session**:
 
 1. **Send the current session to the background**:
 	Use one of the following commands:
@@ -261,7 +260,7 @@ to see all available Meterpreter commands.
 
 ### 2. Samnba usermap script
 
-To exploit this vulnerability, we will use the **`exploit/multi/samba/usermap_script`** module in **Metasploit**. Here's how to proceed:
+To exploit this vulnerability, we will use the **`exploit/multi/samba/usermap_script`** module in **Metasploit**:
 
 1. **Open `msfconsole`**:
 
@@ -971,7 +970,7 @@ This is the `Cat` class, which also inherits from `Animal`.
 
 ---
 
-### Example Objects
+#### Example Objects
 ```ruby
 animal = Animal.new("Dino", 65432343)
 puts "Animal says:"
@@ -1003,7 +1002,7 @@ Creates a `Cat` named "Rex", checks if it's hungry, and prints its sound, age, a
 
 ---
 
-### Output
+#### Output
 ```
 Animal says:
 Grr...
