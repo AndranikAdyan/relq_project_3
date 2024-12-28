@@ -9,6 +9,7 @@
 5. [Ruby OOP](#ruby-oop)
 6. [Metasploit-fraework Structure](#metasploit-fraework-structure)
 7. [Msf module](#msf-module)
+8. [Vulnweb Analysis](#vulnweb-analysis)
 
 ### Metasplotable Machine
 
@@ -309,7 +310,7 @@ And as we can see, we have a shell with root privileges.
 
 ### 3. Java RMI Server
 
-To exploit this vulnerability, we will use the **`exploit/multi/misc/java_rmi_server`** module in **Metasploit**. Here's how to proceed:
+To exploit this vulnerability, we will use the **`exploit/multi/misc/java_rmi_server`** module in **Metasploit**:
 
 1. **Open `msfconsole`**:
 
@@ -1158,3 +1159,33 @@ end
 #### Usage
 
 ![alt text](images/image-23.png)
+
+### Vulnweb Analysis
+
+#### About Vulnweb
+The website [testphp.vulnweb.com](http://testphp.vulnweb.com/) is a deliberately vulnerable web page designed for training and testing security tools like Burp Suite. It is used for hands-on practice in identifying vulnerabilities such as SQL injections, XSS (Cross-Site Scripting), and other common web application weaknesses, all within a controlled environment. This makes it a safe platform for penetration testing and web application analysis, without the risk of harming real websites.
+
+Thus, [testphp.vulnweb.com](http://testphp.vulnweb.com/) is an ideal site for testing various attack techniques and security tools, offering users an opportunity to learn about real vulnerabilities and methods to mitigate them.
+
+#### Analysis
+
+- When visiting the homepage, we receive the following request and response:
+	![alt text](images/image-24.png)
+
+	In the response, we can see that the site is running on Nginx 1.19.0, PHP 5.6.40-38 on Ubuntu 20.04.1, which may have vulnerabilities.
+
+- When we enter one of the categories, we get the following request and response:
+	![alt text](images/image-25.png)
+	
+	When adding -- to the URL parameter cat=1 on the site, it results in an SQL error, which suggests the possibility of an SQL Injection vulnerability.
+
+- If we navigate through the categories, open one of them, and then open one of the products, changing the filename (e.g., from `1.jpg` to something else), we can potentially access information from the `/proc` directory. Specifically, we can try to view files like `/proc/self/status`, `/proc/meminfo`, `/proc/version`, and `/proc/cpuinfo`.
+
+	By manipulating the file name or path parameters in the URL, we might be able to exploit a Local File Inclusion (LFI) vulnerability. This could allow us to retrieve sensitive system information from `/proc`, such as:
+
+	1. **/proc/self/status**: Contains details about the current process, including memory usage, thread count, and other important process statistics.
+	2. **/proc/meminfo**: Provides detailed information about the system's memory usage, including total, free, and available memory.
+	3. **/proc/version**: Displays information about the Linux kernel version, which can be useful for understanding the system's capabilities and vulnerabilities.
+	4. **/proc/cpuinfo**: Gives detailed information about the CPU, such as the number of cores, architecture, and features.
+
+	![alt text](images/image-26.png)
