@@ -771,7 +771,7 @@ secret:
 
 - In Burp Suite, go to Proxy > HTTP History and find the `POST /my-account/avatar` request and send this request to Repeater.
 
-- Change `filename="exploit.jpg"` to `filename="..%2fexploit.php"` and send request.
+- Change `filename="avatar.jpg"` to `filename="..%2fexploit.php"` and send request.
 
 - In Burp Suite, go to `Proxy` > `HTTP History` and find the `GET /my-account` request and send this request to Repeater.
 
