@@ -1092,7 +1092,7 @@ Defines a new Metasploit auxiliary module, inheriting from `Msf::Auxiliary` and 
 def initialize(info = {})
 	super(update_info(info,
 		'Name'			=> 'TCP port scanner',
-		'Description'	=> 'Scan port on target host',
+		'Description'		=> 'Scan port on target host',
 		'Author'		=> 'Andranik Adyan',
 		'License'		=> MSF_LICENSE
 	))
